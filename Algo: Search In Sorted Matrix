@@ -1,0 +1,63 @@
+
+'''
+https://leetcode.com/problems/search-a-2d-matrix/submissions/1299121323/
+
+'''
+# 🛠️ IMPLEMENT
+# Write your algorithm.
+
+class Solution(object):
+    def searchMatrix(self, matrix, target):
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+        """
+        if not matrix or not matrix[0]:
+            return False
+
+        rows, cols = len(matrix), len(matrix[0])
+        left, right = 0, rows * cols- 1
+
+        while left <= right:
+            mid = (left + right) // 2
+            mid_value = matrix[mid // cols][mid % cols]
+
+            if mid_value == target:
+                return True
+            elif mid_value < target:
+                left = mid + 1
+            else:
+                right = mid - 1
+
+        return False
+
+# 🧪 VERIFY
+# Run tests. Methodically debug & analyze issues.
+matrix1 = [[]]
+matrix2 = [[1]]
+matrix3 = [[1, 2, 3]]
+matrix4 = [
+  [1],
+  [4],
+  [7]]
+matrix5 = [
+  [1, 2, 3],
+  [4, 5, 6]]
+matrix6 = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]]
+matrix7 = [
+  [ 1,  2,  3,  4,  5],
+  [ 6,  7,  8,  9, 10],
+  [11, 12, 13, 14, 15]]
+
+solution = Solution()
+print(solution.searchMatrix(matrix1, 1)) # F
+print(solution.searchMatrix(matrix2, 1)) # T
+print(solution.searchMatrix(matrix3, 3)) #T
+print(solution.searchMatrix(matrix4, 3)) #F
+print(solution.searchMatrix(matrix5, 7))#F
+print(solution.searchMatrix(matrix6, 0))#F
+print(solution.searchMatrix(matrix7, 12))#T
