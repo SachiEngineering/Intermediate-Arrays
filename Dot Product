@@ -1,0 +1,23 @@
+'''
+Q. Given two matrices, multiply them using the dot product (under "Multiplying a Matrix by Another Matrix") of rows and columns.
+'''
+
+def solution(matrix1, matrix2):
+    rows = len(matrix1)
+    cols = len(matrix2[0])
+    common_dim = len(matrix2)  # This is also len(matrix1[0])
+
+
+    result = []
+
+
+    for i in range(rows):
+        outer = []
+        for j in range(cols):
+            sum_product = 0
+            for k in range(common_dim):
+                sum_product += matrix1[i][k] * matrix2[k][j]
+            outer.append(sum_product)
+        result.append(outer)
+       
+    return result
