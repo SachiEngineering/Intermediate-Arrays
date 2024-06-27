@@ -1,0 +1,20 @@
+'''
+Note: Your solution should only use O(1) additional memory, since that's what you'll be asked to do during an interview.
+Given a matrix of integers m, rotate it by 180 degrees.
+'''
+def solution(m):
+    rows = len(m)
+    cols = len(m[0])
+   
+    for i in range(rows):
+        for j in range(cols):
+            iSym = rows-i-1
+            jSym = cols-j-1
+           
+            #swap if in first half and not middle
+            if i<iSym or (i == iSym and j < jSym):
+                hold = m[i][j]
+                m[i][j] = m[iSym][jSym]
+                m[iSym][jSym] = hold
+               
+    return m
