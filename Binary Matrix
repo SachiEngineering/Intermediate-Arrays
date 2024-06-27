@@ -1,0 +1,9 @@
+#Given a matrix, check if it is a binary matrix. A binary matrix is a matrix in which all the elements are either 0 or 1.
+
+def solution(m):
+    for i in range(len(m)):
+        for j in range(len(m[0])):
+            if m[i][j] != (0) and m[i][j] != 1:
+                return False
+               
+    return True
