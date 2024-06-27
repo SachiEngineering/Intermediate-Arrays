@@ -29,3 +29,8 @@ def solution(m):
         if col %2 == 0:
             for row in range(rows):
                 result.append(m[row][col])
+        else:
+            for row in range(rows-1,-1,-1):
+                result.append(m[row][col])
+           
+    return result
